@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Müzik Paneli</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+    }
+
+    .music-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1db954;
+      color: white;
+      padding: 1rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 320px;
+      z-index: 9999;
+    }
+
+    .music-player select {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: none;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .controls button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .controls input[type="range"] {
+      flex: 1;
+      margin: 0 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="music-player">
+    <select id="songSelector">
+      <option value="song1.mp3">🎶 Şarkı 1 - Aşk Melodisi</option>
+      <option value="song2.mp3">🌙 Şarkı 2 - Gece Huzuru</option>
+      <option value="song3.mp3">🔥 Şarkı 3 - Enerjik Ritim</option>
+    </select>
+    <div class="controls">
+      <button onclick="togglePlay()">⏯️</button>
+      <button onclick="changeVolume(-0.1)">🔉</button>
+      <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" onchange="setVolume(this.value)">
+      <button onclick="changeVolume(0.1)">🔊</button>
+    </div>
+    <audio id="audioPlayer" src="song1.mp3"></audio>
+  </div>
+
+  <script>
+    const audio = document.getElementById("audioPlayer");
+    const selector = document.getElementById("songSelector");
+    const volumeSlider = document.getElementById("volumeControl");
+
+    selector.addEventListener("change", () => {
+      audio.src = selector.value;
+      audio.play();
+    });
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+
+    function changeVolume(amount) {
+      let newVolume = Math.min(1, Math.max(0, audio.volume + amount));
+      audio.volume = newVolume;
+      volumeSlider.value = newVolume;
+    }
+
+    function setVolume(val) {
+      audio.volume = parseFloat(val);
+    }
+  </script>
+
+</body>
+</html>

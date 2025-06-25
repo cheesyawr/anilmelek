@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotoğraf Duvarımız</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background-image: url('img/brick-wall.jpg'); /* Tuğla duvar */
+      background-size: cover;
+      background-position: center;
+      font-family: 'Outfit', sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      min-height: 100vh;
+      position: relative;
+    }
+
+ .spotify-embed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 40;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+
+
+    h1 {
+      width: 100%;
+      text-align: center;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .note {
+      position: relative;
+      width: 220px;
+      height: auto;
+      padding: 16px;
+      background-color: #fff9dc;
+      border-radius: 10px;
+      box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+      transform: rotateZ(var(--rotate));
+    }
+
+    .note::before {
+      content: '📌';
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%) rotate(10deg);
+      font-size: 24px;
+      color: #ff2e63;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .note img {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .back-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #ff2e63;
+      color: white;
+      padding: 10px 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #e62e5e;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📸 Fotoğraf Duvarımız</h1>
+<p style="
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 1.1rem;
+  margin-top: -15px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+">
+  İsterdim ki burayı bir sürü fotoğrafla doldurayım,<br>
+  Ama olsun, her yeni anımızı buraya kaydediyor olacağım sevgilim.
+</p>
+
+
+  <!-- Fotoğraf notları -->
+  <div class="note" style="--rotate: -4deg;">
+    <img src="img/1.jpg" alt="Anı 1">
+  </div>
+  <div class="note" style="--rotate: 3deg;">
+    <img src="img/2.jpg" alt="Anı 2">
+  </div>
+  <div class="note" style="--rotate: -6deg;">
+    <img src="img/3.jpg" alt="Anı 3">
+  </div>
+  <div class="note" style="--rotate: 5deg;">
+    <img src="img/4.jpg" alt="Anı 4">
+  </div>
+  <div class="note" style="--rotate: -2deg;">
+    <img src="img/5.jpg" alt="Anı 5">
+  </div>
+
+  <!-- Geri dön butonu -->
+  <button class="back-button" onclick="window.history.back()">← Geri Dön</button>
+
+<div class="spotify-embed">
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3TKakBgJaTH5INk0WhU4xP?utm_source=generator" width="300" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+
+
+</body>
+</html>
